@@ -1,0 +1,22 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row align-items-center">
+    <div class="col">
+        <form id="update_user" action="/user/new_user" method="POST"> {% csrf_token %}
+            <label for="username">Username</label><br>
+            <input id="username" name="username" minlength=3 form="update_user" value="{{user.username}}" required="true"><br>
+            <label for="password">Password</label><br>
+            <input id="password" name="password" minlength=8 form="update_user" value="" type="password" required="true"><br>
+            <label for="repeat_password">Repeat Password</label><br>
+            <input id="repeat_password" name="new_password" minlength=8 form="update_user" value="" type="password" required="true"><br>
+            <label for="email">Email</label><br>
+            <input id="email" name="email" minlength=3 form="update_user" value="{{user.email}}" required="true"><br>
+            <label for="first_name">First Name</label><br>
+            <input id="first_name" name="first_name" minlength=3 form="update_user" value="{{user.first_name}}" required="true"><br>
+            <label for="last_name">Last Name</label><br>
+            <input id="last_name" name="last_name" minlength=2 form="update_user" value="{{user.last_name}}" required="true"><br><br>
+            <input type="submit" value="Create User">
+        </form>
+    </div>
+</div>
+{% endblock %}

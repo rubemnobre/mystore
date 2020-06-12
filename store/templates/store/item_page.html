@@ -1,0 +1,43 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row align-items-center">
+    <div class="col" id="item_name">
+        <a><h1>{{item.name}}</h1> </a>
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+        {% if item.image %}
+        <img src="{{item.image.url}}" style="height:200px;">
+        
+        {% else %}
+        <img src="/media/none.png" style="width: 200px;">
+        {% endif %}
+    </div>
+</div>
+<br>
+<div class="row align-items-center">
+    <div class="col">
+        <p>{{item.description}}</p>
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+        <h2>RUB {{item.price}}</h2>
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+        <h5>Ammount in stock: {{item.inStock}}</h5>
+    </div>
+    <div class="col">
+        {% if user.is_authenticated %}
+        <form id="addToCart" action="/items/addToCart/" method="POST">{% csrf_token %}
+            <input name="item_id" form="addToCart" type="text" hidden="true" value="{{item.id}}">
+            <input type="submit" value="Add to Cart">
+        </form>
+        {% endif %}
+    </div>
+</div>
+<br>
+{% endblock %}
