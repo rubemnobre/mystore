@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row align-items-center">
     <div class="col">
-        <form id="update_user" action="/user/new_user" method="POST"> {% csrf_token %}
+        <form id="update_user" action="/user/new_user/" method="POST"> {% csrf_token %}
             <label for="username">Username</label><br>
             <input id="username" name="username" minlength=3 form="update_user" value="{{user.username}}" required="true"><br>
             <label for="password">Password</label><br>
